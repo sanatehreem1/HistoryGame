@@ -23,7 +23,7 @@ async function getStory(req, res) {
     try {
         let id = req.params.id;
         const characters = await Character.getAllByStory(id);
-         res.status(200).json(characters);
+        res.status(200).json(characters);
     } catch(err) {
         res.status(500).json({error: err.message})
     }
