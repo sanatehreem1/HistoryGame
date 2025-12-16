@@ -25,8 +25,54 @@
 
 .container {
     height: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.loginbox {
+    background-color: #4e0000;
+    border-radius: 10px;
+    width: 538px;
+    height: 367px;
+
 }
 
+.loginform{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 0px;
+    margin: 0px;
+
+   
+}
+.loginform label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: center;
+    font-family: "Instrument Serif", serif;
+    color: white;
+    font-size: 25px;
+}
+.loginform input,
+.loginform select
+ {
+    padding: 5px;
+    font-size: 16px;
+    width: 80%;  
+}
+.loginform button{
+    width: 40%;
+    margin: 0 auto;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 10px;
+    font-family: "Instrument Serif", serif;
+    
+    
+}
 footer {
     display: flex;
     justify-content: center;
