@@ -85,9 +85,202 @@ One PostgreSQL database with **three schemas**:
 
 ## Project Structure
 
+The project is organised into a **clear frontend and backend separation**, following MVC principles and RESTful API design.
+
+### Root Structure
+
 ```txt
-the-ghost-of-henry-viii/
-├── backend/
-│   ├── src/
-│   │   ├── api/
+HistoryGame/
+├── Backend/
+├── Frontend/
+├── .gitignore
+└── README.md
+```
+
+## Backend Architecture
+The backend is built using Node.js and Express, structured to ensure clear separation of concerns.
+```txt
+Backend/
+├── controller/
+│   ├── characters.js
+│   ├── stories.js
+│   └── users.js
 │
+├── database/
+│   ├── connection.js
+│   ├── setup.js
+│   └── setup.sql
+│
+├── middleware/
+│   ├── authenticator.js
+│   └── logger.js
+│
+├── models/
+│   ├── Character.js
+│   ├── Story.js
+│   └── User.js
+│
+├── routers/
+│   ├── characters.js
+│   ├── stories.js
+│   └── user.js
+│
+├── app.js
+├── index.js
+└── package.json
+```
+
+Backend Flow (MVC Pattern)
+The backend follows a Model–Controller–Router pattern:
+Client Request
+ ↓
+Router
+ ↓
+Controller
+ ↓
+Model
+ ↓
+Database
+
+## Responsibilities
+1. Routers
+- Define API endpoints
+-    Apply middleware (auth, logging)
+2. Controllers
+-    Handle request logic
+-    Validate input
+-    Coordinate responses
+3. Models
+-    Interact with the SQL database
+-    Contain query logic
+4. Middleware
+-    Authentication
+-    Request logging
+
+## Authentication
+User authentication is implemented using:
+- Secure password hashing (bcrypt)
+- JSON Web Tokens (JWT)
+- Protected routes using custom middleware
+# Authentication Flow
+1. User registers or logs in
+2. Server validates credentials
+3. JWT token is issued
+4. Token is required for protected game routes
+
+## Database Setup
+
+The project uses an **SQL database** to store users, game stories (riddles), and characters (wives).
+
+### Database Files
+
+- **`setup.sql`**
+  - Creates all database tables
+  - Defines relationships between entities
+
+- **`setup.js`**
+  - Runs the database setup from Node.js
+  - Executes the SQL schema programmatically
+
+- **`connection.js`**
+  - Handles database connection pooling
+  - Manages communication between the backend and the database
+
+### Logical Data Separation
+
+Although the project uses a **single database**, data is logically separated into the following domains:
+
+- **Users**
+  - Authentication and authorisation data
+
+- **Stories**
+  - Riddles, clues, and multiple-choice questions
+
+- **Characters**
+  - Henry VIII’s wives and their associated fact files
+
+This approach ensures **maintainability and clarity** while keeping deployment simple and reliable.
+
+---
+
+## Game Content Structure
+
+### Characters (Wives)
+
+Each character includes:
+- Name
+- Historical fate
+- Fact file content
+
+Characters are used for:
+- Navigation dropdown fact files
+- Elimination logic during gameplay
+
+---
+
+### Stories (Riddles)
+
+Each story round contains:
+- Mysterious narrative clues
+- Multiple-choice questions
+- Elimination rules
+- Ordered progression through the game
+
+This structure encourages **deductive reasoning** rather than simple recall.
+
+---
+
+## Frontend Overview
+
+The frontend is built using **HTML, CSS, and JavaScript**, with a focus on clarity, accessibility, and student engagement.
+
+### Key Features
+
+- Login page
+- Intro narrative page
+- Navigation bar with fact file dropdown
+- Riddle and question pages
+- Final reveal screen
+
+Fact files are accessible at any time to support learning **without breaking the mystery**.
+
+---
+
+## UX & Design Principles
+
+- Mystery-driven narrative design
+- Progressive disclosure of information
+- Optional learning support via fact files
+- Simple, readable UI suitable for school environments
+- Designed for short classroom sessions
+
+Wireframes were created in **Figma** before development began.
+
+---
+
+## Testing
+
+- Backend endpoints tested manually and with automated tests
+- Testing focuses on:
+  - Authentication
+  - Game progression
+  - Data retrieval
+
+Target test coverage: **60%+**
+
+---
+
+## Agile Process & Project Management
+
+- Daily stand-ups
+- Kanban board used to track progress
+- Feature freeze enforced mid-week
+- Regular retrospectives
+- Clear MVP scope defined early
+
+All documentation and planning materials are stored and maintained via **GitHub**.
+
+
+
+
+
