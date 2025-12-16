@@ -111,6 +111,16 @@ html, body {
 .wives-box div {
   cursor: pointer;
 }
+#AB, #CA, #CP, #CH, #JS, #AC {
+    background-color: #4e0000;
+    color: white;
+    gap: 10px;
+    border-radius: 10px;
+    font-family:"Instrumental Serif", serif;
+    padding: 5px;
+    margin: 5px;
+    height: 85px;
+} 
 .buttons {
   display: flex;
   justify-content: space-between;
