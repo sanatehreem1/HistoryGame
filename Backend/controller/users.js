@@ -19,7 +19,10 @@ async function register(req, res) {
 
         res.status(201).send(result);
     } catch (err) {
-        res.status(400).json({ error: err.message });
+        if (err.message.includes('already taken')) {
+            return res.status(409).json({ error: err.message });
+        }
+        res.status(500).json({ error: 'Registration failed: ' + err.message });
     }
 }
 
@@ -36,7 +39,9 @@ async function login(req, res) {
         const match = await bcrypt.compare(data.password, user.password)
         if (!match) { throw new Error('Invalid credentials')}
         
-        const payload = { username: user.username }
+        const payload = { 
+            user_id: user.user_id,
+            username: user.username }
         
         const sendToken = (err, token) => {
             if(err){ throw new Error('Error in token generation') }
