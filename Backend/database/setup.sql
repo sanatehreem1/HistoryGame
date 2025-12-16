@@ -29,6 +29,7 @@ CREATE TABLE characters (
     death VARCHAR (1000),
     haunting_motives VARCHAR (1000),
     correct_answer BOOLEAN,
+    image_url TEXT,
     story_id INT,
     PRIMARY KEY (character_id),
     FOREIGN KEY (story_id) REFERENCES stories(story_id)
@@ -62,7 +63,7 @@ Her downfall had consequences that extended beyond her own death.
 
 Only one wife matches all of these clues. Who is she?');
 
-INSERT INTO characters (name, early_life, marriage, fun_fact, death, haunting_motives, correct_answer, story_id)
+INSERT INTO characters (name, early_life, marriage, fun_fact, death, haunting_motives, correct_answer, image_url, story_id)
 VALUES
 ('Catherine of Aragon', 
 'Catherine was born in Spain to powerful Catholic monarchs, Ferdinand II of Aragon and Isabella I of Castile. She was highly educated, fluent in several languages, and raised to be a queen from a young age.',
@@ -70,7 +71,7 @@ VALUES
 'She acted as regent while Henry was at war in France and oversaw the English victory at the Battle of Flodden.',
 'Catherine died in 1536 after a long period of illness.',
 'If she were haunting the court, it would be due to betrayal, as she was cast aside after years of loyal service and denied recognition as queen.)',
-FALSE, 1),
+FALSE, image_url, 1),
 
 ('Anne Boleyn',
 'Anne grew up in European royal courts, receiving an advanced education in France and the Netherlands. She was known for her intelligence, charm, and strong personality.',
@@ -78,7 +79,7 @@ FALSE, 1),
 'Anne was the mother of Elizabeth I, one of England’s greatest monarchs.',
 'Anne was executed by beheading in 1536 after being accused of adultery, incest, and treason.',
 'Anne’s spirit would haunt the court seeking justice, believing she was falsely accused and betrayed by the king she once loved.',
-TRUE, 1),
+TRUE, image_url, 1),
 
 ('Jane Seymour',
 'Jane came from a modest noble family and was known for her quiet nature and traditional values.',
@@ -86,7 +87,7 @@ TRUE, 1),
 'Jane was Henry VIII’s only wife to give him a legitimate male heir, Edward VI.',
 'Jane died in 1537 from complications following childbirth.',
 'If haunting, her motive would be sorrow over dying young and never seeing her son grow up.'
-,FALSE, 1),
+,FALSE, image_url, 1),
 
 ('Anne of Cleves',
 'Anne was raised in a strict German court and received little formal education compared to Henry’s other wives.',
@@ -94,7 +95,7 @@ TRUE, 1),
 'She outlived all of Henry’s other wives and remained on friendly terms with him.',
 'Anne died peacefully of natural causes in 1557.',
 'She has little reason to haunt the court, having survived the marriage and lived comfortably afterward.',
-FALSE, 1),
+FALSE, image_url, 1),
 
 ('Catherine Howard',
 'Catherine grew up in a chaotic household with little supervision and received minimal education.',
@@ -102,7 +103,7 @@ FALSE, 1),
 'She was a cousin of Anne Boleyn.',
 'Catherine was executed in 1542 after being accused of adultery.',
 'Her spirit would haunt the palace out of fear and injustice, punished harshly for mistakes made in youth.',
-FALSE, 1),
+FALSE, image_url, 1),
 
 ('Catherine Parr',
 'Catherine was highly educated and deeply interested in religion and learning.',
@@ -110,4 +111,4 @@ FALSE, 1),
 'She helped reconcile Henry with his daughters Mary and Elizabeth.',
 'Catherine died from complications following childbirth after Henry’s death.',
 'If haunting, it would be due to unfinished work in reform and education rather than anger or betrayal.',
-FALSE, 1);
+FALSE, image_url, 1);

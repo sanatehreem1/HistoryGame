@@ -1,3 +1,27 @@
+// // 1. Get the wife index from query params
+const params = new URLSearchParams(window.location.search);
+return params.get('id');
+
+// 2. Fetch all wives from your API
+async function fetchCharacterByID(id) {
+    try {
+        const response = await fetch(`https://localhost:3000/characters/char/${id}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }); 
+        if (!response.ok) {
+            throw new Error('Network response not good');
+        }
+        const character = await response.json();
+        displayCharacterData(character);
+    } catch (error) {
+        console.error('Error fetching character data:', error);
+        throw error;
+    }
+}
+
 function displayCharacterData(character) {
 
     const name = document.querySelector(".character_name");
@@ -30,41 +54,6 @@ function displayCharacterData(character) {
         haunting.textContent = character.haunting;
     }
 }
-
-
-
-
-
-// // 1. Get the wife index from query params
-const params = new URLSearchParams(window.location.search);
-return params.get('id');
-
-// 2. Fetch all wives from your API
-async function fetchCharacterByID(id) {
-    try {
-        const response = await fetch(`https://localhost:3000/characters/char/${id}`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }); 
-        if (!response.ok) {
-            throw new Error('Network response not good');
-        }
-        const character = await response.json();
-        displayCharacterData(character);
-    } catch (error) {
-        console.error('Error fetching character data:', error);
-    }
-}
-  
-  })
-  .catch(err => {
-    console.error(err);
-    document.getElementById("wife-info").innerHTML = "<p>Error loading wife data.</p>";
-  });
-}
-
 
 
 //const wifeIndex = Number(params.get("wife")); 

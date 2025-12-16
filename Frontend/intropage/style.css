@@ -3,7 +3,7 @@ body{
     display:flex;
     background: url('../FrontendImages/Henrybackground.png') center/cover no-repeat;
     min-height: 100vh;
-    flex-direction: column
+    flex-direction: column;
 }
 .navbar {
   padding-left: 0;
@@ -17,6 +17,7 @@ body{
   align-items: center;
   gap: 12px;
 }
+
 * {
   box-sizing: border-box;
 }
@@ -111,6 +112,7 @@ html, body {
 .wives-box div {
   cursor: pointer;
 }
+
 #AB, #CA, #CP, #CH, #JS, #AC {
     background-color: #4e0000;
     color: white;
@@ -121,11 +123,13 @@ html, body {
     margin: 5px;
     height: 85px;
 } 
+
 .buttons {
   display: flex;
   justify-content: space-between;
   margin-top: 48px;
 }
+
 .return-btn,
 .guess-btn {
   background-color: #5A0000;
