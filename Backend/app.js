@@ -2,7 +2,10 @@ const express = require('express');
 const cors = require('cors');
 
 const logRoutes = require('./middleware/logger');
-//const router = require('./routers/...')
+
+const charRouter = require('./routers/characters');
+const storyRouter = require('./routers/stories');
+const userRouter = require('./routers/user');
 
 const app = express();
 app.use(cors());
@@ -11,12 +14,13 @@ app.use(logRoutes);
 
 app.get("/", (req, res) => {
     res.json({
-        name: "Discretion",
-        description: "Send and receive private messages."
+        name: "API Homepage",
+        description: "Use other things."
     })
 })
 
-//app.use('/...', router)
-
+app.use("/characters", charRouter);
+app.use("/stories", storyRouter);
+app.use("/users", userRouter);
 
 module.exports = app;

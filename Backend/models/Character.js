@@ -1,4 +1,5 @@
 const db = require('../database/connection');
+const charRouter = require('../routers/characters');
 
 class Character {
     constructor({character_id, name, early_life, marriage, fun_fact, death, haunting_motives, correct_answer, story_id}) {
@@ -18,11 +19,13 @@ class Character {
         return response.rows.map(p => new Character(p));
     }
 
-    static async getOneByID(){
-        const response = await db.query("SELECT * FROM characters WHERE character_id = $1;", [character_id]);
+    static async getOneByID(id){
+        const response = await db.query("SELECT * FROM characters WHERE character_id = $1;", [id]);
         if (response.rows.length != 1) {
             throw new Error("Unable to locate character!!")
         }
         return new Character(response.rows[0]);
     };
 }
+
+module.exports = Character;
