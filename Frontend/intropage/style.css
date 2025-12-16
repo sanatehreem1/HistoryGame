@@ -18,6 +18,7 @@
   align-items: center;
   gap: 12px;
 }
+
 * {
   box-sizing: border-box;
 }
@@ -105,11 +106,13 @@ html, body {
 .wives-box div {
   cursor: pointer;
 }
+
 .buttons {
   display: flex;
   justify-content: space-between;
   margin-top: 48px;
 }
+
 .return-btn,
 .guess-btn {
   background-color: #5A0000;
