@@ -26,7 +26,7 @@ const wifeButtons = document.querySelectorAll(".wife-btn");
 wifeButtons.forEach((button, index) => {
   button.addEventListener("click", () => {
     // Redirect to factfile page with index as query param
-    window.location.href = `factfile/index.html?wife=${index}`;
+    window.location.href = `../factfile/index.html?wife=${index}`;
   });
 });
 
