@@ -6,6 +6,7 @@ CREATE TABLE users (
     user_id INT GENERATED ALWAYS AS IDENTITY,
     username VARCHAR(50) UNIQUE NOT NULL,
     password VARCHAR(60) NOT NULL,
+    school VARCHAR(80),
     score INT,
     PRIMARY KEY (user_id)
 );

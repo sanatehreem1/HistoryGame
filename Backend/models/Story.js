@@ -13,8 +13,8 @@ class Story{
         return response.rows.map(p => new Story(p));
     }
 
-    static async getOneById(id) {
-        const response = await db.query("SELECT * FROM stories WHERE story_id = $1;", [story_id]);
+    static async getOneByID(id) {
+        const response = await db.query("SELECT * FROM stories WHERE story_id = $1;", [id]);
         if (response.rows.length != 1) {
             throw new Error("Unable to locate story!!")
         }
