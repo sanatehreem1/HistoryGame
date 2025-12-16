@@ -26,6 +26,11 @@ class Character {
         }
         return new Character(response.rows[0]);
     };
+
+    static async getAllByStory(id){
+        const response = await db.query("SELECT * FROM characters WHERE story_id = $1;", [id]);
+        return response.rows.map(c => new Character(c));
+    }
 }
 
 module.exports = Character;
