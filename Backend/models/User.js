@@ -32,11 +32,11 @@ class User{
 
     static async create(data) {
         const { username, password, school } = data;
-        let alreadyExists = await db.query('SELECT * FROM users WHERE username = $1;' [username]);
-        if (alreadyExists.rows.length > 0){
+        const alreadyExists = await db.query('SELECT * FROM users WHERE username = $1;', [username]);
+        if (alreadyExists.rows.length !== 0){
             throw new Error('Username already taken!')
         }
-        let response = await db.query("INSERT INTO user_account (username, password, school) VALUES ($1, $2, $3) RETURNING user_id;",
+        let response = await db.query("INSERT INTO users (username, password, school) VALUES ($1, $2, $3) RETURNING user_id;",
             [username, password, school]);
         const newId = response.rows[0].user_id;
         const newUser = await User.getOneByID(newId);
