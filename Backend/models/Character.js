@@ -2,7 +2,7 @@ const db = require('../database/connection');
 const charRouter = require('../routers/characters');
 
 class Character {
-    constructor({character_id, name, early_life, marriage, fun_fact, death, haunting_motives, correct_answer, story_id}) {
+    constructor({character_id, name, early_life, marriage, fun_fact, death, haunting_motives, correct_answer, image_url, story_id}) {
         this.character_id = character_id
         this.name = name
         this.early_life = early_life
@@ -11,6 +11,7 @@ class Character {
         this.death = death
         this.haunting_motives = haunting_motives
         this.correct_answer = correct_answer
+        this.image_url = image_url
         this.story_id = story_id
     }
 

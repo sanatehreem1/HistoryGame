@@ -35,7 +35,6 @@ CREATE TABLE characters (
     FOREIGN KEY (story_id) REFERENCES stories(story_id)
 );
 
-
 INSERT INTO stories (story_title, story_outline, riddle_text)
 VALUES
 ('The Haunted Manor',
@@ -71,7 +70,7 @@ VALUES
 'She acted as regent while Henry was at war in France and oversaw the English victory at the Battle of Flodden.',
 'Catherine died in 1536 after a long period of illness.',
 'If she were haunting the court, it would be due to betrayal, as she was cast aside after years of loyal service and denied recognition as queen.)',
-FALSE, 'image_url', 1),
+FALSE, '../Frontend/FrontendImages/CatherineAragon.jpg', 1),
 
 ('Anne Boleyn',
 'Anne grew up in European royal courts, receiving an advanced education in France and the Netherlands. She was known for her intelligence, charm, and strong personality.',
@@ -79,7 +78,7 @@ FALSE, 'image_url', 1),
 'Anne was the mother of Elizabeth I, one of England’s greatest monarchs.',
 'Anne was executed by beheading in 1536 after being accused of adultery, incest, and treason.',
 'Anne’s spirit would haunt the court seeking justice, believing she was falsely accused and betrayed by the king she once loved.',
-TRUE, 'image_url', 1),
+TRUE, '../Frontend/FrontendImages/AnneBoleyn.jpg', 1),
 
 ('Jane Seymour',
 'Jane came from a modest noble family and was known for her quiet nature and traditional values.',
@@ -87,7 +86,7 @@ TRUE, 'image_url', 1),
 'Jane was Henry VIII’s only wife to give him a legitimate male heir, Edward VI.',
 'Jane died in 1537 from complications following childbirth.',
 'If haunting, her motive would be sorrow over dying young and never seeing her son grow up.'
-,FALSE, 'image_url', 1),
+,FALSE, '../Frontend/FrontendImages/JaneSeymour.webp', 1),
 
 ('Anne of Cleves',
 'Anne was raised in a strict German court and received little formal education compared to Henry’s other wives.',
@@ -95,7 +94,7 @@ TRUE, 'image_url', 1),
 'She outlived all of Henry’s other wives and remained on friendly terms with him.',
 'Anne died peacefully of natural causes in 1557.',
 'She has little reason to haunt the court, having survived the marriage and lived comfortably afterward.',
-FALSE, 'image_url', 1),
+FALSE, '../Frontend/FrontendImages/AnnOfCleves.jpg', 1),
 
 ('Catherine Howard',
 'Catherine grew up in a chaotic household with little supervision and received minimal education.',
@@ -103,7 +102,7 @@ FALSE, 'image_url', 1),
 'She was a cousin of Anne Boleyn.',
 'Catherine was executed in 1542 after being accused of adultery.',
 'Her spirit would haunt the palace out of fear and injustice, punished harshly for mistakes made in youth.',
-FALSE, 'image_url', 1),
+FALSE, '../Frontend/FrontendImages/CatherineHoward.webp', 1),
 
 ('Catherine Parr',
 'Catherine was highly educated and deeply interested in religion and learning.',
@@ -111,4 +110,4 @@ FALSE, 'image_url', 1),
 'She helped reconcile Henry with his daughters Mary and Elizabeth.',
 'Catherine died from complications following childbirth after Henry’s death.',
 'If haunting, it would be due to unfinished work in reform and education rather than anger or betrayal.',
-FALSE, 'image_url', 1);
+FALSE, '../Frontend/FrontendImages/CatherineParr.jpg', 1);
