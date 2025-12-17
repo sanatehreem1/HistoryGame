@@ -25,6 +25,15 @@
 
     
 }
+.navbar2,
+.navbar2:visited,
+.navbar2:hover,
+.navbar2:focus,
+.navbar2:active {
+  color: white;
+  text-decoration: none;
+}
+
 .usericon {
   margin-left: auto;
 }
