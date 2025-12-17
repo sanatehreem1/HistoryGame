@@ -8,27 +8,36 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" defer></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Jim+Nightshade&display=swap"
         rel="stylesheet">
     <script src = "script.js" defer></script>
+    <script src="../logout.js" defer></script>
 </head>
 
 <body>
     <header>
-        <nav class="navbar" id="whitenav">
-            <a class="navbar2" href="../homepage/index.html">
-                <img id="ghost" src="../FrontendImages/whiteghostreal.png" width="123px" height="123px"
-                    class="d-inline-block align-top">
-                Historic Hauntings
-            </a>
-            <a class="usericon" href="#">
-                <img id="icon" src="../FrontendImages/whiteicon-removebg-preview.png" alt="iconimage" width="116px"
-                    height="125px">
-            </a>
-        </nav>
-    </header>
+    <nav class="navbar" id="whitenav">
+      <a class="navbar2" href="../homepage/index.html">
+        <img id="ghost" src="../FrontendImages/whiteghostreal.png" width="123px" height="123px"
+          class="d-inline-block align-top">
+        Historic Hauntings
+      </a>
+      <div class="usericon dropdown">
+        <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <img id="icon" src="../FrontendImages/whiteicon-removebg-preview.png" alt="iconimage" width="116px"
+            height="125px">
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end p-3">
+          <li class = "my-2"><a class="dropdown-item text-center" href="../homepage/index.html">Username</a></li>
+          <li class = "my-2"></li><a class="dropdown-item text-center">School</a></li>
+          <button class="logout my-2">Log Out</button>
+        </ul>
+      </div>
+    </nav>
+  </header>
     <div class="wifecontainer">
         <h1 class="wifepicker">Who is the ghost!</h1>
         <div class="container mt-4">

@@ -22,6 +22,8 @@ document.querySelector('.loginform').addEventListener("submit", async (e) => {
 
     if (response.status == 200) {
         localStorage.setItem("token", data.token);
+        localStorage.setItem("user", data.user.username);
+        localStorage.setItem("school", data.user.school);
         window.location.assign("../homepage/index.html");
       } else {
         alert(data.error);
