@@ -1,5 +1,5 @@
 async function loadStory() {
-    response = await fetch(`http://localhost:3456/stories/1`);
+    response = await fetch(`http://localhost:3000/stories/1`);
     const title = document.querySelector(".page-title");
     const introText = document.querySelector(".intro-text");
     const riddleText = document.querySelector(".riddle-box");
