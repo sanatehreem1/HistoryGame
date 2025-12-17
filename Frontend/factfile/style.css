@@ -33,6 +33,15 @@ body {
     -1px -1px 0 #000,
     1px -1px 0 #000;
 }
+.navbar2,
+.navbar2:visited,
+.navbar2:hover,
+.navbar2:focus,
+.navbar2:active {
+  color: white;
+  text-decoration: none;
+}
+
 .main-content {
   flex: 1;
   padding: 80px 20px;
