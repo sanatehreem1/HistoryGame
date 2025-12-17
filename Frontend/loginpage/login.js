@@ -17,7 +17,7 @@ document.querySelector('.loginform').addEventListener("submit", async (e) => {
     }
 
     console.log('ready to search for user');
-    const response = await fetch(`http://localhost:3000/users/login`, options);
+    const response = await fetch(`http://localhost:3456/users/login`, options);
     const data = await response.json();
 
     if (response.status == 200) {
