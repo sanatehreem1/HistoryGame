@@ -82,9 +82,19 @@ html, body {
   border: 1.5px solid #333;
   border-radius: 12px;
   padding: 20px;
-  min-height: 220px;
+  height: 225px;
   position: relative;
+  font-size: 30px;
 }
+
+.carouselStyle {
+  height: 200px;
+}
+
+.clue-btn{
+  color: #4e0000 !important;
+}
+
 .next-btn {
   position: absolute;
   bottom: 16px;
@@ -92,7 +102,7 @@ html, body {
   width: 44px;
   height: 44px;
   border-radius: 8px;
-  background-color: #5A0000;
+  background-color: #4e0000;
   color: white;
   border: none;
   font-size: 18px;
