@@ -57,7 +57,9 @@ body {
 .info-box {
   background-color: #4E0000;
   color: white;
-  height: 150px;
+  min-height: 300px;
+  min-width: 300px;
+  padding: 10px;
   border-radius: 14px;
   display: flex;
   align-items: center;
