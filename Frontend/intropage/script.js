@@ -8,10 +8,41 @@ async function loadStory() {
     
     title.textContent = storyData.story_title;
 
-    riddleText.innerHTML = `<p> ${storyData.riddle_text} </p> <button class="next-btn">▶</button>`;
+    riddleLoader(storyData.riddle_text, riddleText);
 
     introText.innerHTML = `<p> ${storyData.story_outline} </p>`;
 }
+
+function riddleLoader(text, textBox){
+  const riddleArray = text.split('\n');
+  let carouselInner = '';
+  let indicatorsInner = ''
+  for (i=0; i< riddleArray.length; i++){
+    let newString = '';
+    let newIndic = '';
+    if (i== 0){
+      newString = `
+    <div class="carousel-item active">
+    <p>${riddleArray[i]}</p>
+    </div>`
+      newIndic = `<li data-target="#carouselExampleIndicators" data-bs-slide-to="${i}" class="active"></li>`
+    } else {
+      newString = `
+    <div class="carousel-item">
+    <p>${riddleArray[i]}</p>
+    </div>
+    `
+    newIndic = `<li data-target="#carouselExampleIndicators" data-bs-slide-to="${i}" ></li>`
+    }
+    
+    carouselInner = carouselInner.concat('', newString)
+    indicatorsInner = indicatorsInner.concat('',newIndic);
+
+  }
+  document.querySelector(".carousel-inner").innerHTML = carouselInner;
+  document.querySelector(".carousel-indicators").innerHTML = indicatorsInner;
+}
+
 
 const returnButton = document.querySelector(".return-btn").addEventListener("click", () => {
     window.location.href = "../homepage/index.html"
