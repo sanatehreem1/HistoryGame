@@ -1,5 +1,5 @@
 const db = require('../database/connection');
-const charRouter = require('../routers/characters');
+
 
 class Character {
     constructor({character_id, name, early_life, marriage, fun_fact, death, haunting_motives, correct_answer, image_url, story_id}) {
