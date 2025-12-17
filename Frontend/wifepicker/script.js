@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function checkWifeByName(wifeName) {
   try {
-    const response = await fetch(`http://localhost:3000/characters`, {
+    const response = await fetch(`http://localhost:3001/characters`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json"
@@ -79,14 +79,14 @@ function showCorrectScreen(wifeName, characterId) {
       color: #2D6A4F;
       font-size: 1em;
     ">
-      Continue to Fact File
+      Back to homepage
     </button>
   `;
 
   document.body.appendChild(popup);
 
   document.getElementById("next-btn").addEventListener("click", () => {
-    window.location.href = `../factfile/index.html?id=${characterId}`;
+    window.location.href = `../homepage/index.html`;
   });
 }
 
@@ -134,9 +134,9 @@ function showWrongScreen(wifeName) {
     </button>
   `;
 
+  
   document.body.appendChild(popup);
 
   document.getElementById("close-popup").addEventListener("click", () => {
-    popup.remove();
-  });
-}
+    window.location.href = `../intropage/index.html`;
+  })}
