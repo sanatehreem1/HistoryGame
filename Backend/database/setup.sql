@@ -49,17 +49,11 @@ Your task is to uncover which wife is haunting the palace.
 Explore the profiles of Henry’s wives, study their lives, marriages, and deaths, and use the clues provided to narrow down the culprit. Only one wife fits all the clues.
 
 Choose carefully — history holds the answers.',
-'Clues:
-The haunting wife did not die of natural causes.
-
-She was married to Henry VIII for fewer than four years.
-
-Her death was directly linked to accusations made against her.
-
-She never gave birth to a surviving son.
-
-Her downfall had consequences that extended beyond her own death.
-
+'Clue 1: The haunting wife did not die of natural causes.
+Clue 2: She was married to Henry VIII for fewer than four years.
+Clue 3: Her death was directly linked to accusations made against her.
+Clue 4: She never gave birth to a surviving son.
+Clue 5: Her downfall had consequences that extended beyond her own death.
 Only one wife matches all of these clues. Who is she?');
 
 INSERT INTO characters (name, early_life, marriage, fun_fact, death, haunting_motives, correct_answer, image_url, story_id)
