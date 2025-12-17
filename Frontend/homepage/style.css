@@ -25,6 +25,31 @@
 
     
 }
+.usericon {
+  margin-left: auto;
+}
+
+.dropdown-item{
+  display: block;       
+  margin: 0 auto;       
+  padding: 5px 15px;    
+  text-align: center;  
+  border: none; 
+}
+.dropdown-menu.dropdown-menu-end.p-3{
+  border-radius: 10px;
+}
+.logout {
+  background-color: #4e0000;
+  border-radius: 10px;
+  color: white;
+  font-family: "Instrument Serif", serif;
+  display: block;       
+  margin: 0 auto;       
+  padding: 5px 15px;    
+  text-align: center;  
+  border: none;   
+}
 .levelcontainer{
     flex:1;
     background-color: #DCD7C9;
