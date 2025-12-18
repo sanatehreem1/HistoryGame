@@ -1,11 +1,8 @@
 {
-  "name": "postgres",
+  "name": "frontend",
   "version": "1.0.0",
   "description": "",
-  "license": "ISC",
-  "author": "",
-  "type": "commonjs",
-  "main": "index.js",
+  "main": "logout.js",
   "scripts": {
     "dev": "nodemon -L index.js",
     "start": "node index.js",
@@ -16,19 +13,23 @@
     "coverage": "jest --coverage"
   },
   "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
   "devDependencies": {
     "jest": "^30.2.0",
+    "jsdom": "^21.1.2",
     "nodemon": "^3.1.11"
   },
   "dependencies": {
-    "bcrypt": "^6.0.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
-    "jsdom": "^27.3.0",
-    "jsonwebtoken": "^9.0.3",
-    "pg": "^8.16.3",
-    "postgres": "^3.4.7",
-    "uuid": "^13.0.0"
+    "pg": "^8.16.3"
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "./__tests__/helpers.js"
+    ]
   }
 }
