@@ -5,7 +5,7 @@ let document;
 
 describe("index.html", () => {
   beforeEach(async () => {
-    dom = await renderDOM("./homepage/index.html");
+    dom = await renderDOM("../homepage/index.html");
     document = await dom.window.document;
   });
 
