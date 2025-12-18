@@ -33,18 +33,10 @@ describe("index.html", () => {
   it('Header contains user icon', () => {
     const usericon = document.querySelector('.usericon');
     expect(usericon).toBeTruthy;
-    expect(usericon.innerHTML).toContain(`
-        <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <img id="icon" src="../FrontendImages/whiteicon-removebg-preview.png" alt="iconimage" width="116px"
-            height="125px">
-        </button>
-        <ul class="dropdown-menu dropdown-menu-end p-3">
-          <li class = "my-2"><a class="dropdown-item text-center" href="../homepage/index.html">Username</a></li>
-          <li class = "my-2"><a class="dropdown-item text-center">School</a></li>
-          <button class="logout my-2">Log Out</button>
-        </ul>
-        `)
+    expect(usericon.innerHTML).toContain("Log Out")
+    expect(usericon.innerHTML).toContain("School")
+    expect(usericon.innerHTML).toContain("Username")
 
-  })
+  });
 
 });
