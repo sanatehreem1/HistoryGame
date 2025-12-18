@@ -1,28 +1,42 @@
-//The Path module provides a way of working with directories and file paths.
-const path = require('path')
-const jsdom = require('jsdom');
-//To use jsdom, you will primarily use the JSDOM constructor, which is a named export of the jsdom main module.
-const { JSDOM } = jsdom;
-
-const renderDOM = async (filename) => {
-  //The process.cwd() method is an inbuilt application programming interface of the process module which is used to get the current working directory of the node.js process.
-  const filePath = path.join(process.cwd(), filename);
-  //Similar to fromURL(), jsdom also provides a fromFile() factory method for constructing a jsdom from a filename
-  // To enable executing scripts inside the page, you can use the runScripts: "dangerously" option
-  //If you want to execute external scripts, included via <script src="">, you'll also need to ensure that they load them. To do this, add the option resources: "usable" as described below. (You'll likely also want to set the url option, for the reasons discussed there.)
+const { JSDOM } = require('jsdom');
+const path = require('path');
+const renderDOM = async (file) => {
+  const filePath = path.resolve(__dirname, file);
   const dom = await JSDOM.fromFile(filePath, {
     runScripts: 'dangerously',
-    resources: 'usable'
+    resources: 'usable',
+    beforeParse(window) {
+      // :white_tick: fetch stub (prevents fetch errors during script load)
+      window.fetch = window.fetch || jest.fn(() =>
+        Promise.resolve({
+          status: 200,
+          json: () => Promise.resolve({ token: 'fake-token' })
+        })
+      );
+      // :white_tick: localStorage stub (prevents ReferenceError)
+      window.localStorage = window.localStorage || {
+        _store: {},
+        setItem(key, value) {
+          this._store[key] = String(value);
+        },
+        getItem(key) {
+          return this._store.hasOwnProperty(key)
+            ? this._store[key]
+            : null;
+        },
+        removeItem(key) {
+          delete this._store[key];
+        },
+        clear() {
+          this._store = {};
+        }
+      };
+    }
   });
-
-  return new Promise((resolve, _) => {
-    // When using the JSDOM constructor, you will get back a JSDOM object, which has a number of useful properties, notably window and document to use below
-    // We're basically are saying: 
-    // We wait for the DOM content to have loaded and then we can resolve the promise
-    dom.window.document.addEventListener('DOMContentLoaded', () => {
-      resolve(dom);
-    });
+  // Wait for scripts to finish loading
+  await new Promise(resolve => {
+    dom.window.addEventListener('load', resolve);
   });
+  return dom;
 };
-
 module.exports = { renderDOM };

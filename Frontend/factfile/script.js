@@ -10,7 +10,7 @@ fetch("http://localhost:3001/characters/story/1")
     const wife = wives[wifeIndex];
 
     if (!wife) {
-      document.getElementById("wife-info").innerHTML = "<p>Wife not found.</p>";
+      document.getElementById("page-title").innerHTML = "<p>Wife not found.</p>";
       return;
     }
       // Render the wife's information
