@@ -13,7 +13,15 @@ describe("index.html", () => {
     const btn = document.getElementById("story1");
     expect(btn).toBeTruthy();
   });
+  it('clicking the button changes the location', () => {
+    const btn = document.querySelector(".pickera")
+    const loc = dom.window.location
 
+    loc.assign = jest.fn()
+
+    btn.click()
+    expect(loc.href).toContain('intropage/index.html')
+  })
   it("Has a header", () => {
     const header = document.querySelector("header");
     expect(header).toBeTruthy;

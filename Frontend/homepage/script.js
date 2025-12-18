@@ -1,4 +1,4 @@
-const pickElement = document.getElementById('story1').addEventListener("click", () => {
+const pickElement = document.querySelector('.pickera').addEventListener("click", () => {
     window.location.href = "../intropage/index.html"
 })
 
