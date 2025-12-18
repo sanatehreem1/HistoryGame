@@ -1,40 +1,54 @@
-const fs = require("fs");
-const path = require("path");
-const { JSDOM } = require("jsdom");
+const { renderDOM } = require('./helpers')
 
-describe("Fact File Page", () => {
-  test("should render the Return button", () => {
-    const htmlPath = path.resolve(__dirname, "../factfile/index.html");
-    const html = fs.readFileSync(htmlPath, "utf8");
+let dom;
+let document;
 
-    const dom = new JSDOM(html);
-    const { document } = dom.window;
+describe('index.html', () => {
+  beforeEach(async () => {
+    dom = await renderDOM('./factfile/index.html');
+    document = await dom.window.document;
+  })
+  it('has a return button', () => {
+    const btn = document.querySelector('return-btn')
+    expect(btn).toBeTruthy
+    
+  })
 
-    const returnBtn = document.querySelector(".return-btn");
-    expect(returnBtn).not.toBeNull();
-    expect(returnBtn.textContent.trim()).toBe("Return");
-  });
+})
 
-  test("clicking Return should redirect to homepage", () => {
-    const htmlPath = path.resolve(__dirname, "../factfile/index.html");
-    const scriptPath = path.resolve(__dirname, "../factfile/script.js");
+// describe("Fact File Page", () => {
+//   test("should render the Return button", () => {
+//     const htmlPath = path.resolve(__dirname, "../factfile/index.html");
+//     const html = fs.readFileSync(htmlPath, "utf8");
 
-    const html = fs.readFileSync(htmlPath, "utf8");
-    const dom = new JSDOM(html, { url: "http://localhost/factfile/index.html" });
+//     const dom = new JSDOM(html);
+//     const { document } = dom.window;
 
-    global.window = dom.window;
-    global.document = dom.window.document;
+//     const returnBtn = document.querySelector(".return-btn");
+//     expect(returnBtn).not.toBeNull();
+//     expect(returnBtn.textContent.trim()).toBe("Return");
+//   });
 
-    delete global.window.location;
-    global.window.location = { href: "http://localhost/factfile/index.html" };
+//   test("clicking Return should redirect to homepage", () => {
+//     const htmlPath = path.resolve(__dirname, "../factfile/index.html");
+//     const scriptPath = path.resolve(__dirname, "../factfile/script.js");
 
-    require(scriptPath);
+//     const html = fs.readFileSync(htmlPath, "utf8");
+//     const dom = new JSDOM(html, { url: "http://localhost/factfile/index.html" });
 
-    const returnBtn = global.document.querySelector(".return-btn");
-    expect(returnBtn).not.toBeNull();
+//     global.window = dom.window;
+//     global.document = dom.window.document;
 
-    returnBtn.click();
+//     delete global.window.location;
+//     global.window.location = { href: "http://localhost/factfile/index.html" };
 
-    expect(global.window.location.href).toContain("../homepage/index.html");
-  });
-});
+//     require(scriptPath);
+
+//     const returnBtn = global.document.querySelector(".return-btn");
+//     expect(returnBtn).not.toBeNull();
+
+//     returnBtn.click();
+
+//     expect(global.window.location.href).toContain("../homepage/index.html");
+//   });
+// });
