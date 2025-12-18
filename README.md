@@ -1,53 +1,62 @@
-# The Haunted Manor 
+# Historic Hauntings 
 **Project Alpha – Week 5**
 
 An elimination-based, mystery-driven educational history game designed to improve engagement and knowledge retention in non-STEM subjects.
 
+---
 
 ## Project Overview
 
-**The Haunted Manor** is a web-based educational game created for the Hive group of secondary schools.  
-The game places students in a mystery narrative where a restless spirit haunts Henry VIII’s court, and players must use historical reasoning, clues, and deduction to uncover which of Henry VIII’s wives has returned from the grave.
+**Historic Hauntings** is a full-stack web-based educational game created for the Hive group of secondary schools.
 
-The project prioritises **student enjoyment**, **active learning**, and **knowledge retention**, while remaining practical for classroom use within limited lesson time.
+The game places students inside a mystery narrative set in Henry VIII’s court, where a restless spirit haunts the manor. Players must use historical reasoning, clues, and deduction to uncover which of Henry VIII’s wives has returned from the grave.
+
+The project prioritises:
+
+- **Student enjoyment**
+- **Active learning**
+- **Knowledge retention**
+- **Short, classroom-friendly gameplay**
 
 ---
 
 ## Problem Statement
 
-The Hive group of secondary schools has identified a decline in student engagement and enjoyment in non-STEM subjects. Feedback from students, parents, and teachers highlights:
+The Hive group of secondary schools identified a decline in engagement and enjoyment in non-STEM subjects.
 
+Feedback from stakeholders highlighted:
 - Repetitive lesson formats
 - Over-reliance on textbook learning
 - Difficulty retaining large volumes of content
-- Reduced enjoyment of learning
+- Reduced enjoyment and motivation
 
 The Hive Foundation requested a solution that:
 - Places enjoyment at the centre of learning
-- Encourages critical thinking
-- Improves recall and engagement in non-STEM subjects
+- Encourages critical thinking and deduction
+- Improves recall in non-STEM subjects
+- Fits within limited lesson time
 
 ---
 
 ## Our Solution
 
-We designed a **short, narrative-driven history game** that:
+We designed a **short, narrative-driven educational history game** that:
 
 - Uses **mystery and elimination mechanics**
 - Encourages **deductive reasoning**, not rote memorisation
-- Allows optional access to **historical fact files** for learning support
-- Can be completed in **under 10 minutes**, making it classroom-friendly
+- Allows optional access to **historical fact files**
+- Can be completed during lesson time.
 
-Students progress through riddles and multiple-choice questions, eliminating suspects until only one historical figure remains.
+Students eliminate suspects round by round until only one historical figure fits all the clues.
 
 ---
 
 ## Target Users
 
-- **Students (Primary users)** – engaging, interactive learning experience
-- **Teachers** – curriculum-aligned, time-efficient resource
-- **Parents** – increased enjoyment and confidence in learning
-- **Hive Group (School Management)** – scalable, measurable engagement solution
+- **Students** – engaging, interactive learning experience  
+- **Teachers** – curriculum-aligned, time-efficient classroom tool  
+- **Parents** – improved enjoyment and confidence in learning  
+- **Hive Group** – scalable, measurable engagement solution  
 
 ---
 
@@ -55,12 +64,10 @@ Students progress through riddles and multiple-choice questions, eliminating sus
 
 1. Student logs in
 2. Intro narrative sets the mystery
-3. Player progresses through **8 riddle rounds**
-4. Each round includes:
-   - A mysterious clue
-   - A multiple-choice historical question
+3. Player progresses through riddles whilst also reading through factfiles
+4. Player then goes on to guess who the suspect is
 5. Incorrect suspects are eliminated
-6. Fact files are available at any time via the navigation bar
+6. Fact files are accessible via navigation
 7. Player makes a final accusation
 8. The ghost is revealed with historical explanation
 
@@ -70,24 +77,23 @@ Students progress through riddles and multiple-choice questions, eliminating sus
 
 The project uses a **layered architecture** with clear separation of concerns:
 
-- **Frontend:** UI rendering and user interaction
-- **Backend API:** Game flow, validation, and logic orchestration
-- **Game Logic Engine:** Elimination and scoring logic
-- **Database:** Structured historical and game data
+- **Frontend** – UI rendering and user interaction
+- **Backend API** – validation, logic orchestration
+- **Game Logic** – elimination and correctness checking
+- **Database** – structured historical and user data
 
 ### Logical Data Separation
-One PostgreSQL database with **three schemas**:
-- `auth` – user authentication
-- `game` – riddles, questions, eliminations
-- `characters` – wives and fact files
+
+A PostgreSQL database (hosted on Supabase) stores:
+- Users
+- Stories (riddles)
+- Characters (wives and fact files)
 
 ---
 
 ## Project Structure
 
-The project is organised into a **clear frontend and backend separation**, following MVC principles and RESTful API design.
-
-### Root Structure
+### Root
 
 ```txt
 HistoryGame/
@@ -97,8 +103,8 @@ HistoryGame/
 └── README.md
 ```
 
-## Backend Architecture
-The backend is built using Node.js and Express, structured to ensure clear separation of concerns.
+### Backend Architecture 
+
 ```txt
 Backend/
 ├── controller/
@@ -129,104 +135,56 @@ Backend/
 ├── index.js
 └── package.json
 ```
-
-Backend Flow (MVC Pattern)
-The backend follows a Model–Controller–Router pattern:
+Backend Flow:
+```txt
 Client Request
- ↓
-Router
- ↓
-Controller
- ↓
-Model
- ↓
-Database
-
-## Responsibilities
-1. Routers
-- Define API endpoints
--    Apply middleware (auth, logging)
-2. Controllers
--    Handle request logic
--    Validate input
--    Coordinate responses
-3. Models
--    Interact with the SQL database
--    Contain query logic
-4. Middleware
--    Authentication
--    Request logging
-
+     ↓
+   Router
+     ↓
+ Controller
+     ↓
+    Model
+     ↓
+  Database
+```
+---
 ## Authentication
-User authentication is implemented using:
+Authentication is implemented using:
 - Secure password hashing (bcrypt)
 - JSON Web Tokens (JWT)
-- Protected routes using custom middleware
-# Authentication Flow
-1. User registers or logs in
-2. Server validates credentials
-3. JWT token is issued
-4. Token is required for protected game routes
+- Protected routes via middleware
+Authentication Flow:
+- User registers or logs in
+- Credentials are validated
+- JWT token is issued
+- Token is required for protected routes
+- Logout clears client-side session data
 
 ## Database Setup
 
-The project uses an **SQL database** to store users, game stories (riddles), and characters (wives).
+The project uses a **relational SQL database** to store user data, narrative content, and historical character information.
 
-### Database Files
+### Key Files
 
-- **`setup.sql`**
-  - Creates all database tables
-  - Defines relationships between entities
+- **`setup.sql`**  
+  Creates all database tables and defines relationships between entities.
 
-- **`setup.js`**
-  - Runs the database setup from Node.js
-  - Executes the SQL schema programmatically
+- **`setup.js`**  
+  Executes the SQL schema programmatically from the backend.
 
-- **`connection.js`**
-  - Handles database connection pooling
-  - Manages communication between the backend and the database
+- **`connection.js`**  
+  Manages pooled database connections between the backend and the database.
 
-### Logical Data Separation
+### Database Entities
 
-Although the project uses a **single database**, data is logically separated into the following domains:
+- **Users**  
+  Stores authentication credentials and user profile data.
 
-- **Users**
-  - Authentication and authorisation data
+- **Stories**  
+  Contains riddle text, narrative content, and game progression data.
 
-- **Stories**
-  - Riddles, clues, and multiple-choice questions
-
-- **Characters**
-  - Henry VIII’s wives and their associated fact files
-
-This approach ensures **maintainability and clarity** while keeping deployment simple and reliable.
-
----
-
-## Game Content Structure
-
-### Characters (Wives)
-
-Each character includes:
-- Name
-- Historical fate
-- Fact file content
-
-Characters are used for:
-- Navigation dropdown fact files
-- Elimination logic during gameplay
-
----
-
-### Stories (Riddles)
-
-Each story round contains:
-- Mysterious narrative clues
-- Multiple-choice questions
-- Elimination rules
-- Ordered progression through the game
-
-This structure encourages **deductive reasoning** rather than simple recall.
+- **Characters**  
+  Stores information about Henry VIII’s wives, including historical fact files.
 
 ---
 
@@ -234,15 +192,15 @@ This structure encourages **deductive reasoning** rather than simple recall.
 
 The frontend is built using **HTML, CSS, and JavaScript**, with a focus on clarity, accessibility, and student engagement.
 
-### Key Features
+### Pages
 
-- Login page
-- Intro narrative page
-- Navigation bar with fact file dropdown
-- Riddle and question pages
-- Final reveal screen
+- Login / Register  
+- Intro narrative page  
+- Fact file pages  
+- Wife picker (final guess)  
+- Result feedback screens  
 
-Fact files are accessible at any time to support learning **without breaking the mystery**.
+Fact files are accessible at any time during gameplay to support learning **without breaking narrative immersion**.
 
 ---
 
@@ -251,37 +209,199 @@ Fact files are accessible at any time to support learning **without breaking the
 - Mystery-driven narrative design
 - Progressive disclosure of information
 - Optional learning support via fact files
-- Simple, readable UI suitable for school environments
+- Clear, readable UI suitable for school environments
 - Designed for short classroom sessions
 
-Wireframes were created in **Figma** before development began.
+Wireframes were created using **Figma** prior to development to guide layout, navigation, and user flow.
+
+## Installation & Usage
+
+### Prerequisites
+- Node.js (v18+ recommended)
+- npm
+- PostgreSQL / Supabase account
 
 ---
 
-## Testing
+### Backend Setup
 
-- Backend endpoints tested manually and with automated tests
-- Testing focuses on:
-  - Authentication
-  - Game progression
-  - Data retrieval
+```bash
+cd backend
+npm install
+```
 
-Target test coverage: **60%+**
+### Create a .env file:
+```
+PORT=3000
+DATABASE_URL=your_supabase_connection_string
+JWT_SECRET=your_secret_key
+BCRYPT_SALT_ROUNDS=10
+NODE_ENV=development
+```
+### Set up the database:
+```
+node database/setup.js
+```
+### Run the backend server:
+```
+npm run dev
+```
+### Backend runs on:
+```
+http://localhost:3001
+```
+### Frontend Setup 
+```
+cd Frontend
+```
+### Open index.html using:
+- Live Server (VS Code recommended)
+- OR deployed frontend URL
+
+## 🧪 Testing
+
+- Unit and integration tests written using **Jest**
+- API endpoints tested manually using **Postman**
+- Database reset scripts used to maintain test consistency
+- Target test coverage: **60%+**
+
+### Run Tests
+
+```bash
+npm test
+```
+## Technologies
+
+### Frontend
+- HTML5  
+- CSS3  
+- JavaScript (ES6+)  
+- Bootstrap  
+- Google Fonts  
+
+### Backend
+- Node.js  
+- Express.js  
+- PostgreSQL  
+- Supabase  
+- JWT Authentication  
+- bcrypt  
+- dotenv  
+
+### Tooling & Workflow
+- Git & GitHub  
+- GitHub Projects (Kanban)  
+- Jest  
+- Postman  
 
 ---
 
-## Agile Process & Project Management
+## Architecture & Process
 
-- Daily stand-ups
-- Kanban board used to track progress
-- Feature freeze enforced mid-week
-- Regular retrospectives
-- Clear MVP scope defined early
+The project follows an **MVC architecture**:
 
-All documentation and planning materials are stored and maintained via **GitHub**.
+- **Models** – Database queries and business logic  
+- **Controllers** – Request handling and validation  
+- **Routers** – API endpoint definitions  
+- **Middleware** – Authentication and request logging  
+- **Frontend** – User interface and client-side logic  
 
-![image](whereimageis/path)
+### Development Process
 
+- Agile workflow with weekly planning  
+- GitHub Projects used as a Kanban board  
+- Regular stand-ups and retrospectives  
+- Feature-driven commits with version control  
+
+---
+
+## Planning & Design
+
+- Stakeholder and problem analysis  
+- User journey mapping  
+- Wireframes for all main pages  
+- Database schema (ERD)  
+- High-level system architecture diagram  
+
+These artefacts informed both UX and technical decisions throughout development.
+
+---
+
+## Screenshots
+
+*(Screenshots of the homepage, factfile, and gameplay screens can be added here)*
+
+---
+
+## Wins & Challenges
+
+### Wins
+- Successfully implemented a full authentication flow  
+- Clean separation of concerns using MVC architecture  
+- Dynamic content loading from the database  
+- Smooth frontend ↔ backend integration  
+- Strong narrative-driven user experience  
+
+## Challenges
+
+- Transitioning from index-based logic to database IDs  
+- JWT token handling across frontend routes  
+- Ensuring consistency between deployed and local environments  
+- Balancing scope within a one-week timeframe  
+
+Each challenge was addressed through debugging, refactoring, and iterative testing.
+
+---
+
+## Known Bugs / Limitations
+
+- No password reset functionality  
+- Limited accessibility testing  
+- Score persistence not yet implemented  
+
+---
+
+## Future Features
+
+- Multiple stories and difficulty levels  
+- User progress tracking and scoring  
+- Teacher dashboard for classroom use  
+- Accessibility improvements  
+- Mobile-first redesign  
+- Multiplayer or collaborative modes  
+
+---
+
+## Contribution Guide
+
+This project was developed as part of a one-week educational sprint.
+
+Future contributions could include:
+- UI/UX improvements  
+- Additional historical content  
+- Expanded test coverage  
+
+---
+
+## What We Learned
+
+- How to design and deliver a full-stack application under time constraints  
+- Practical application of MVC architecture  
+- Importance of aligning frontend logic with backend data models  
+- Agile project management and team collaboration  
+- Communicating technical decisions clearly to non-technical stakeholders  
+
+---
+
+## Meet the Team
+
+*(Add team member names and roles here)*
+
+---
+
+## License
+
+This project was created for educational purposes as part of the **Week 5 – Project Alpha** curriculum.
 
 
 
