@@ -280,6 +280,8 @@ Target test coverage: **60%+**
 
 All documentation and planning materials are stored and maintained via **GitHub**.
 
+![image](whereimageis/path)
+
 
 
 
